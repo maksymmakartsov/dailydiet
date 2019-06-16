@@ -20,6 +20,12 @@
     margin: 0;
     padding: 0;
   }
+  select {
+    font-family: Montserrat, sans-serif;
+  }
+  button {
+    font-family: Montserrat, sans-serif;
+  }
 
   @media screen and (max-width: 1900px) {
     body {
@@ -33,7 +39,7 @@
   }
   @media screen and (max-width: 1400px) {
     body {
-      font-size: 60%;
+      font-size: 50%;
     }
   }
 </style>

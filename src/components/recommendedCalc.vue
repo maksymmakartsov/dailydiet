@@ -231,7 +231,7 @@ export default {
     }
     &__button {
       margin-left: 150px;
-      padding: 0.3em 0.5em;
+      padding: 0.4em 0.6em;
       border-radius: 10px;
       border: none;
       -webkit-box-sizing: border-box;
@@ -239,7 +239,7 @@ export default {
       box-sizing: border-box;
       width: 100%;
       max-width: 237px;
-      font-size: 2.25em;
+      font-size: 1.8em;
       font-weight: 300;
       outline: none !important;
 

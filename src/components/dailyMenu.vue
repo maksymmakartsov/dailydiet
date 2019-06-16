@@ -16,7 +16,9 @@
                         v-for="(breakfastField, index) in breakfastFields"
                         :field="breakfastField"
                         :type="type"
-                        :key="index"
+                        :index="index"
+                        :key="breakfastField.id"
+                        @delete-field="deleteField"
                         @calculate="calculateMenu"
                     />
                   </div>
@@ -40,7 +42,9 @@
                         v-for="(branchField, index) in branchFields"
                         :field="branchField"
                         :type="type"
-                        :key="index"
+                        :index="index"
+                        :key="branchField.id"
+                        @delete-field="deleteField"
                         @calculate="calculateMenu"
                     />
                   </div>
@@ -60,7 +64,9 @@
                         v-for="(lunchField, index) in lunchFields"
                         :field="lunchField"
                         :type="type"
-                        :key="index"
+                        :index="index"
+                        :key="lunchField.id"
+                        @delete-field="deleteField"
                         @calculate="calculateMenu"
                     />
                   </div>
@@ -84,7 +90,9 @@
                         v-for="(secondLunchField, index) in secondLunchFields"
                         :field="secondLunchField"
                         :type="type"
-                        :key="index"
+                        :index="index"
+                        :key="secondLunchField.id"
+                        @delete-field="deleteField"
                         @calculate="calculateMenu"
                     />
                   </div>
@@ -104,7 +112,9 @@
                         v-for="(dinnerField, index) in dinnerFields"
                         :field="dinnerField"
                         :type="type"
-                        :key="index"
+                        :index="index"
+                        :key="dinnerField.id"
+                        @delete-field="deleteField"
                         @calculate="calculateMenu"
                     />
                   </div>
@@ -167,6 +177,7 @@ export default {
     return {
       breakfastFields: [
         {
+          id: '_' + Math.random().toString(36).substr(2, 9),
           name: 'breakfast',
           food1: [
             {
@@ -252,6 +263,7 @@ export default {
       ],
       branchFields: [
         {
+          id: '_' + Math.random().toString(36).substr(2, 9),
           name: 'branch',
           food1: [
             {
@@ -280,6 +292,7 @@ export default {
       ],
       lunchFields: [
         {
+          id: '_' + Math.random().toString(36).substr(2, 9),
           name: 'lunch',
           food1: [
             {
@@ -360,6 +373,7 @@ export default {
       ],
       secondLunchFields: [
         {
+          id: '_' + Math.random().toString(36).substr(2, 9),
           name: 'secondLunch',
           food1: [
             {
@@ -388,6 +402,7 @@ export default {
       ],
       dinnerFields: [
         {
+          id: '_' + Math.random().toString(36).substr(2, 9),
           name: 'dinner',
           food1: [
             {
@@ -481,9 +496,39 @@ export default {
     }
   },
   methods: {
+    deleteField (index, name) {
+      if (name === 'breakfast') {
+        this.breakfastFields.splice(index, 1)
+        setTimeout(() => {
+          this.calculateMenu()
+        })
+      } else if (name === 'branch') {
+        this.branchFields.splice(index, 1)
+        setTimeout(() => {
+          this.calculateMenu()
+        })
+      } else if (name === 'lunch') {
+        this.lunchFields.splice(index, 1)
+        setTimeout(() => {
+          this.calculateMenu()
+        })
+      } else if (name === 'secondLunch') {
+        this.secondLunchFields.splice(index, 1)
+        setTimeout(() => {
+          this.calculateMenu()
+        })
+      } else {
+        this.dinnerFields.splice(index, 1)
+        setTimeout(() => {
+          this.calculateMenu()
+        })
+      }
+    },
     addAnotherBreakfast () {
       this.breakfastFields.push({
+        id: '_' + Math.random().toString(36).substr(2, 9),
         name: 'breakfast',
+        isDelete: true,
         food1: [
           {
             name: 'Каша гречана(100г)',
@@ -568,7 +613,9 @@ export default {
     },
     addAnotherBranch () {
       this.branchFields.push({
+        id: '_' + Math.random().toString(36).substr(2, 9),
         name: 'branch',
+        isDelete: true,
         food1: [
           {
             name: 'Тост з джемом(1шт.)',
@@ -596,7 +643,9 @@ export default {
     },
     addAnotherLunch () {
       this.lunchFields.push({
+        id: '_' + Math.random().toString(36).substr(2, 9),
         name: 'lunch',
+        isDelete: true,
         food1: [
           {
             name: 'Салат овочевий(100г)',
@@ -676,7 +725,9 @@ export default {
     },
     addAnotherSecondLunch () {
       this.secondLunchFields.push({
+        id: '_' + Math.random().toString(36).substr(2, 9),
         name: 'secondLunch',
+        isDelete: true,
         food1: [
           {
             name: 'Печені яблука(100г)',
@@ -704,7 +755,9 @@ export default {
     },
     addAnotherDinner () {
       this.dinnerFields.push({
+        id: '_' + Math.random().toString(36).substr(2, 9),
         name: 'dinner',
+        isDelete: true,
         food1: [
           {
             name: 'Вінегрет(100г)',

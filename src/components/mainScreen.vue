@@ -71,6 +71,7 @@ export default {
     }
     .gain-weight {
       background-color: rgba(158, 255, 0, 0.7);
+      margin-right: 5em;
 
       &:hover {
         background-color: rgba(158, 255, 0, 1);

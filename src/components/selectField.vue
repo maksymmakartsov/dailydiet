@@ -30,13 +30,17 @@
           @click="increaseQty"
           class="select-field__quantity-changer select-field__quantity-changer--plus">+</span>
     </div>
+    <span
+        @click="$emit('delete-field', index, field.name)"
+        v-if="field.isDelete"
+        class="select-field__delete-field">+</span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'selectField',
-  props: ['field', 'type'],
+  props: ['field', 'type', 'index'],
   data: function () {
     return {
       qty: this.field.qty,
@@ -133,6 +137,28 @@ export default {
         cursor: pointer;
         color: #fff;
         background-color: #b80b0b;
+        transition: all ease-in-out .2s;
+      }
+    }
+    &__delete-field {
+      position: absolute;
+      right: -1.15em;
+      top: 0.25em;
+      transform: rotate(45deg);
+      font-size: 2.8em;
+      font-weight: 300;
+      border-radius: 100%;
+      transition: all ease-in-out .2s;
+      height: 0.8em;
+      width: 0.8em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #b80b0b;
+        color: #fff;
         transition: all ease-in-out .2s;
       }
     }
