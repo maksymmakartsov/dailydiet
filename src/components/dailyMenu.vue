@@ -497,6 +497,7 @@ export default {
   },
   methods: {
     deleteField (index, name) {
+      //test
       if (name === 'breakfast') {
         this.breakfastFields.splice(index, 1)
         setTimeout(() => {
